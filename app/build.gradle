@@ -25,6 +25,9 @@ dependencies {
     // Added for AdMob
     compile 'com.google.android.gms:play-services:7.3.0'
 
-    // Step 1: add dependency for jokeprovider library
+    // Add dependency for jokeprovider library created in step 1
     compile project(':jokeprovider')
+
+    // Add dependency for jokeviewer library created in step 2
+    compile project(':jokeviewer')
 }
