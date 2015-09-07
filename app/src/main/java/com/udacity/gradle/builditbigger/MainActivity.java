@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.JokeWizard;
 import com.example.eamon.jokeviewer.JokeViewActivity;
+import com.example.eamon.jokeviewer.JokeViewFragment;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -44,9 +44,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-//        String joke = JokeWizard.getJoke();
-//        Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
         Intent jokeViewIntent = new Intent(this, JokeViewActivity.class);
+        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE,JokeWizard.getJoke());
         startActivity(jokeViewIntent);
     }
 

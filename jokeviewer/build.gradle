@@ -21,7 +21,4 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.1.1'
-
-    // Add dependency for jokeprovider library created in step 1
-    compile project(':jokeprovider')
 }

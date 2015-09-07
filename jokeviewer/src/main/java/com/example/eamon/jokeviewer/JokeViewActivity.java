@@ -1,11 +1,22 @@
 package com.example.eamon.jokeviewer;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class JokeViewActivity extends AppCompatActivity {
+public class JokeViewActivity extends AppCompatActivity
+        implements JokeViewFragment.JokeViewFragmentListener {
+
+    private String LOG_TAG = JokeViewActivity.class.getSimpleName();
+
+    public static final String EXTRA_JOKE = "extra_joke";
+
+    private String mJokeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,5 +45,18 @@ public class JokeViewActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    @Override
+    public String getJokeText() {
+        // Implemented for the JokeViewFragmentListener to provide a joke to the viewer
+        Intent intent = getIntent();
+        if (intent != null) {
+            mJokeText = intent.getStringExtra(EXTRA_JOKE);
+        }
+
+        return mJokeText;
     }
 }
