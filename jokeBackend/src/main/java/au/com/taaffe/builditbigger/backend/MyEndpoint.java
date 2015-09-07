@@ -6,6 +6,7 @@
 
 package au.com.taaffe.builditbigger.backend;
 
+import com.example.JokeWizard;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -32,9 +33,8 @@ public class MyEndpoint {
     @ApiMethod(name = "sayHi")
     public MyBean sayHi(@Named("name") String name) {
 
-        //TODO change method to provide a joke using the JokeWizard class
         MyBean response = new MyBean();
-        response.setData("Hi, " + name);
+        response.setData(JokeWizard.getJoke());
 
         return response;
     }

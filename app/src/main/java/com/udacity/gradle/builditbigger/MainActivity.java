@@ -46,12 +46,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        Intent jokeViewIntent = new Intent(this, JokeViewActivity.class);
-        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE,JokeWizard.getJoke());
-        startActivity(jokeViewIntent);
-
+        // This asynctask retrieves a joke from GCE and sends an intent to display it.
         new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
-
-
 }
