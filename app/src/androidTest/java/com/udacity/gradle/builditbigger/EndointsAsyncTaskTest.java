@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
 public class EndointsAsyncTaskTest extends AndroidTestCase {
     // Test to make sure that the return is non null
     public void testNotNull() {
-        EndpointsAsyncTask.EndpointsAsyncTaskCallback cB = new EndpointsAsyncTask.EndpointsAsyncTaskCallback() {
+        JokeProviderEndpointsAsyncTask.EndpointsAsyncTaskCallback cB = new JokeProviderEndpointsAsyncTask.EndpointsAsyncTaskCallback() {
             @Override
             public void onPostExecuteCallback(String result) {
                 // Do nothing
@@ -16,9 +16,9 @@ public class EndointsAsyncTaskTest extends AndroidTestCase {
 
         String result;
         try {
-            result = new EndpointsAsyncTask().execute(cB).get();
+            result = new JokeProviderEndpointsAsyncTask().execute(cB).get();
         } catch (ExecutionException|InterruptedException e ) {
-            throw new RuntimeException ("EndpointsAsyncTask execution interrupted");
+            throw new RuntimeException ("JokeProviderEndpointsAsyncTask execution interrupted");
         }
 
         assertNotNull(result);

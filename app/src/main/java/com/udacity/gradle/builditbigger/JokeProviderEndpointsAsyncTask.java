@@ -1,27 +1,18 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.util.Pair;
-import android.widget.Toast;
 
-import com.example.JokeWizard;
-import com.example.eamon.jokeviewer.JokeViewActivity;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 
-import javax.security.auth.callback.UnsupportedCallbackException;
-
 import au.com.taaffe.builditbigger.backend.myApi.MyApi;
 
-class EndpointsAsyncTask extends AsyncTask<EndpointsAsyncTask.EndpointsAsyncTaskCallback, Void, String> {
-    private static final String LOG_TAG = EndpointsAsyncTask.class.getSimpleName();
+class JokeProviderEndpointsAsyncTask
+        extends AsyncTask<JokeProviderEndpointsAsyncTask.EndpointsAsyncTaskCallback, Void, String> {
+    private static final String LOG_TAG = JokeProviderEndpointsAsyncTask.class.getSimpleName();
     private static MyApi myApiService = null;
     private EndpointsAsyncTaskCallback mCallback;
 

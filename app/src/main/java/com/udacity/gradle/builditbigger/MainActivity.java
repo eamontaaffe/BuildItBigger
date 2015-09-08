@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.JokeWizard;
 import com.example.eamon.jokeviewer.JokeViewActivity;
-import com.example.eamon.jokeviewer.JokeViewFragment;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -49,7 +47,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void tellJoke(View view){
         final Context context = this;
-        new EndpointsAsyncTask().execute(new EndpointsAsyncTask.EndpointsAsyncTaskCallback() {
+        new JokeProviderEndpointsAsyncTask().execute(new JokeProviderEndpointsAsyncTask.EndpointsAsyncTaskCallback() {
                     @Override
                     public void onPostExecuteCallback(String result) {
                         Log.v(LOG_TAG,"onPostExecuteCallback");
