@@ -38,8 +38,7 @@ class EndpointsAsyncTask extends AsyncTask<EndpointsAsyncTask.EndpointsAsyncTask
         }
 
         mCallback = params[0];
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
+
         if (mCallback == null) {
             Log.e(LOG_TAG, "EndpointsAsyncTaskCallback not supplied");
             return null;
@@ -55,8 +54,5 @@ class EndpointsAsyncTask extends AsyncTask<EndpointsAsyncTask.EndpointsAsyncTask
     @Override
     protected void onPostExecute(String result) {
         mCallback.onPostExecuteCallback(result);
-//        Intent jokeViewIntent = new Intent(context, JokeViewActivity.class);
-//        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, JokeWizard.getJoke());
-//        context.startActivity(jokeViewIntent);
     }
 }
