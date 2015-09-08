@@ -23,7 +23,8 @@ class JokeProviderEndpointsAsyncTask
     @Override
     protected String doInBackground(EndpointsAsyncTaskCallback... params) {
         if(myApiService == null) {  // Only do this once
-            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
+            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport()
+                    , new AndroidJsonFactory(), null)
                 .setRootUrl("https://builditbigger-1061.appspot.com/_ah/api/");
             myApiService = builder.build();
         }
@@ -36,6 +37,7 @@ class JokeProviderEndpointsAsyncTask
         }
 
         try {
+            Log.v(LOG_TAG,"getData()" + myApiService.getJoke().execute().getData());
             return myApiService.getJoke().execute().getData();
         } catch (IOException e) {
             return e.getMessage();

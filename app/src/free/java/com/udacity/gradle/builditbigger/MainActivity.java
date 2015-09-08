@@ -82,7 +82,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void showJoke(String jokeString) {
         Intent jokeViewIntent = new Intent(this, JokeViewActivity.class);
-        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, JokeWizard.getJoke());
+        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, jokeString);
         this.startActivity(jokeViewIntent);
     }
 

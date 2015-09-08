@@ -3,39 +3,39 @@
   <component name="FacetManager">
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
-        <option name="GRADLE_PROJECT_PATH" value="jokebackend" />
+        <option name="GRADLE_PROJECT_PATH" value=":jokeBackend" />
       </configuration>
     </facet>
     <facet type="app-engine-gradle" name="App Engine Gradle">
       <configuration>
         <option name="HTTP_ADDRESS" value="localhost" />
         <option name="HTTP_PORT" value="8080" />
-        <option name="WAR_DIR" value="C:\Users\Eamon\Repos\BuildItBigger\jokeBackend\build\exploded-app" />
-        <option name="WEB_APP_DIR" value="C:\Users\Eamon\Repos\BuildItBigger\jokeBackend\src\main\webapp" />
+        <option name="WAR_DIR" value="C:\Users\Eamon\Repos\BuildItBigger\jokebackend\build\exploded-app" />
+        <option name="WEB_APP_DIR" value="C:\Users\Eamon\Repos\BuildItBigger\jokebackend\src\main\webapp" />
         <option name="APPENGINE_SDKROOT" value="C:\Users\Eamon\.gradle\appengine-sdk\appengine-java-sdk-1.9.18" />
       </configuration>
     </facet>
     <facet type="java-gradle" name="Java-Gradle">
       <configuration>
-        <option name="BUILD_FOLDER_PATH" value="$MODULE_DIR$/../jokeBackend/build" />
+        <option name="BUILD_FOLDER_PATH" value="$MODULE_DIR$/build" />
         <option name="BUILDABLE" value="true" />
       </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/../jokeBackend/build/classes/main" />
-    <output-test url="file://$MODULE_DIR$/../jokeBackend/build/classes/test" />
+    <output url="file://$MODULE_DIR$/build/classes/main" />
+    <output-test url="file://$MODULE_DIR$/build/classes/test" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/build/generated-source/endpoints/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../jokeBackend/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/../jokeBackend/src/endpointsSrc/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/../jokeBackend/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../jokeBackend/src/functionalTest/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../jokeBackend/src/functionalTest/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/../jokeBackend/src/test/resources" type="java-test-resource" />
-      <excludeFolder url="file://$MODULE_DIR$/../jokeBackend/.gradle" />
+      <sourceFolder url="file://$MODULE_DIR$/src/endpointsSrc/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/functionalTest/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/functionalTest/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
     <orderEntry type="inheritedJdk" />
