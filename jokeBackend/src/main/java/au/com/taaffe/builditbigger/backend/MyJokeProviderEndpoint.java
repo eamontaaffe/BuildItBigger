@@ -25,13 +25,13 @@ import javax.inject.Named;
                 packagePath = ""
         )
 )
-public class MyEndpoint {
+public class MyJokeProviderEndpoint {
 
     /**
-     * A simple endpoint method that takes a name and says Hi back
+     * A simple endpoint method that returns a joke
      */
-    @ApiMethod(name = "sayHi")
-    public MyBean sayHi() {
+    @ApiMethod(name = "getJoke")
+    public MyBean getJoke() {
 
         MyBean response = new MyBean();
         response.setData(JokeWizard.getJoke());

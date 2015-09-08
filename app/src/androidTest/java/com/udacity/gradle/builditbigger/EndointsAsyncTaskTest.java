@@ -2,7 +2,6 @@ package com.udacity.gradle.builditbigger;
 
 import android.test.AndroidTestCase;
 
-import java.util.ConcurrentModificationException;
 import java.util.concurrent.ExecutionException;
 
 public class EndointsAsyncTaskTest extends AndroidTestCase {
