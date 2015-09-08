@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.JokeWizard;
 import com.example.eamon.jokeviewer.JokeViewActivity;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -19,7 +18,8 @@ import com.google.android.gms.ads.InterstitialAd;
 public class MainActivity extends ActionBarActivity {
     private static String LOG_TAG = MainActivity.class.getSimpleName();
 
-    InterstitialAd mInterstitialAd;
+    private InterstitialAd mInterstitialAd;
+    private boolean isInterstitialAdOpened = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +31,13 @@ public class MainActivity extends ActionBarActivity {
 
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
+            public void onAdOpened() {
+                isInterstitialAdOpened = true;
+            }
+
+            @Override
             public void onAdClosed() {
-                startJokeAsyncTask();
+                isInterstitialAdOpened = false;
                 requestNewInterstitial();
             }
         });
@@ -66,9 +71,8 @@ public class MainActivity extends ActionBarActivity {
     public void tellJoke(View view){
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
-        } else {
-            startJokeAsyncTask();
         }
+        startJokeAsyncTask();
     }
 
     private void startJokeAsyncTask() {
@@ -80,7 +84,40 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    private void showJoke(String jokeString) {
+    private void showJoke(final String jokeString) {
+        if(isInterstitialAdOpened == true) {
+            mInterstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdOpened() {
+                    isInterstitialAdOpened = true;
+                }
+
+                @Override
+                public void onAdClosed() {
+                    isInterstitialAdOpened = false;
+                    openJokeViewer(jokeString);
+                    requestNewInterstitial();
+                }
+            });
+        } else {
+            openJokeViewer(jokeString);
+        }
+    }
+
+    private void openJokeViewer(String jokeString) {
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdOpened() {
+                isInterstitialAdOpened = true;
+            }
+
+            @Override
+            public void onAdClosed() {
+                isInterstitialAdOpened = false;
+                requestNewInterstitial();
+            }
+        });
+
         Intent jokeViewIntent = new Intent(this, JokeViewActivity.class);
         jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, jokeString);
         this.startActivity(jokeViewIntent);

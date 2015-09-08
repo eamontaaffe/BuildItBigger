@@ -33,9 +33,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Add dependency for jokeprovider library created in step 1
-    compile project(':jokeprovider')
-
     // Add dependency for jokeviewer library created in step 2
     compile project(':jokeviewer')
 

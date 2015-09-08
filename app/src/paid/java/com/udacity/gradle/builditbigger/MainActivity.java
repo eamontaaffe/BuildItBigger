@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.JokeWizard;
 import com.example.eamon.jokeviewer.JokeViewActivity;
 
 
