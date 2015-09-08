@@ -45,10 +45,8 @@ class EndpointsAsyncTask extends AsyncTask<EndpointsAsyncTask.EndpointsAsyncTask
             return null;
         }
 
-        String name = "Manfred";
-
         try {
-            return myApiService.sayHi(name).execute().getData();
+            return myApiService.sayHi().execute().getData();
         } catch (IOException e) {
             return e.getMessage();
         }
