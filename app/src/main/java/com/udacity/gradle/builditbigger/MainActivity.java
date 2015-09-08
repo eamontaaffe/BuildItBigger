@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import com.example.eamon.jokeviewer.JokeViewFragment;
 
 
 public class MainActivity extends ActionBarActivity {
+    private static String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,15 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        // This asynctask retrieves a joke from GCE and sends an intent to display it.
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
+        final Context context = this;
+        new EndpointsAsyncTask().execute(new EndpointsAsyncTask.EndpointsAsyncTaskCallback() {
+                    @Override
+                    public void onPostExecuteCallback(String result) {
+                        Log.v(LOG_TAG,"onPostExecuteCallback");
+                        Intent jokeViewIntent = new Intent(context, JokeViewActivity.class);
+                        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, JokeWizard.getJoke());
+                        context.startActivity(jokeViewIntent);
+                    }
+                });
     }
 }
