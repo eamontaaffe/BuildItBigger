@@ -11,6 +11,7 @@ import com.example.eamon.jokeviewer.JokeViewActivity;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.rey.material.widget.ProgressView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -19,6 +20,7 @@ public class MainActivity extends ActionBarActivity {
     private InterstitialAd mInterstitialAd;
     private boolean isInterstitialAdOpened = false;
     private String mJokeString;
+    ProgressView mProgress;
     
     private AdListener mAdListener = new AdListener() {
         @Override
@@ -58,6 +60,14 @@ public class MainActivity extends ActionBarActivity {
         mInterstitialAd.setAdListener(mAdListener);
 
         requestNewInterstitial();
+
+        mProgress = (ProgressView) findViewById(R.id.progress);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mProgress.setVisibility(View.GONE);
     }
 
 
@@ -91,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void startJokeAsyncTask() {
+        mProgress.setVisibility(View.VISIBLE);
         new JokeProviderEndpointsAsyncTask().execute(new JokeProviderEndpointsAsyncTask.EndpointsAsyncTaskCallback() {
             @Override
             public void onPostExecuteCallback(String result) {
