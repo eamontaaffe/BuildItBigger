@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
                     public void onPostExecuteCallback(String result) {
                         Log.v(LOG_TAG,"onPostExecuteCallback");
                         Intent jokeViewIntent = new Intent(context, JokeViewActivity.class);
-                        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, JokeWizard.getJoke());
+                        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, result);
                         context.startActivity(jokeViewIntent);
                     }
                 });
