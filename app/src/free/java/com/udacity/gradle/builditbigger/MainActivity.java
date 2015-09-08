@@ -11,15 +11,33 @@ import android.view.View;
 
 import com.example.JokeWizard;
 import com.example.eamon.jokeviewer.JokeViewActivity;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 
 public class MainActivity extends ActionBarActivity {
     private static String LOG_TAG = MainActivity.class.getSimpleName();
 
+    InterstitialAd mInterstitialAd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_id));
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                startJokeAsyncTask();
+                requestNewInterstitial();
+            }
+        });
+
+        requestNewInterstitial();
     }
 
 
@@ -46,15 +64,34 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        final Context context = this;
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            startJokeAsyncTask();
+        }
+    }
+
+    private void startJokeAsyncTask() {
         new JokeProviderEndpointsAsyncTask().execute(new JokeProviderEndpointsAsyncTask.EndpointsAsyncTaskCallback() {
-                    @Override
-                    public void onPostExecuteCallback(String result) {
-                        Log.v(LOG_TAG,"onPostExecuteCallback");
-                        Intent jokeViewIntent = new Intent(context, JokeViewActivity.class);
-                        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, JokeWizard.getJoke());
-                        context.startActivity(jokeViewIntent);
-                    }
-                });
+            @Override
+            public void onPostExecuteCallback(String result) {
+                showJoke(result);
+            }
+        });
+    }
+
+    private void showJoke(String jokeString) {
+        Intent jokeViewIntent = new Intent(this, JokeViewActivity.class);
+        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, JokeWizard.getJoke());
+        this.startActivity(jokeViewIntent);
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("249EAA8D9F9DB22A0BEAEFC4A360D217")
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
     }
 }
