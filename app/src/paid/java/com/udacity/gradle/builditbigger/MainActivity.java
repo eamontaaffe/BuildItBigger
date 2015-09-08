@@ -10,17 +10,26 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.eamon.jokeviewer.JokeViewActivity;
+import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
 
 
 public class MainActivity extends ActionBarActivity {
     private static String LOG_TAG = MainActivity.class.getSimpleName();
+    ProgressBarCircularIndeterminate mProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mProgress = (ProgressBarCircularIndeterminate) findViewById(R.id.progress);
+        mProgress.setVisibility(View.GONE);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mProgress.setVisibility(View.GONE);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,5 +65,7 @@ public class MainActivity extends ActionBarActivity {
                         context.startActivity(jokeViewIntent);
                     }
                 });
+        mProgress.setVisibility(View.VISIBLE);
+
     }
 }
