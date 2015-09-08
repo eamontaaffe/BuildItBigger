@@ -8,21 +8,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.eamon.jokeviewer.JokeViewActivity;
-import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
+import com.rey.material.widget.ProgressView;
 
 
 public class MainActivity extends ActionBarActivity {
     private static String LOG_TAG = MainActivity.class.getSimpleName();
-    ProgressBarCircularIndeterminate mProgress;
+    ProgressView mProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mProgress = (ProgressBarCircularIndeterminate) findViewById(R.id.progress);
-        mProgress.setVisibility(View.GONE);
+        mProgress = (ProgressView) findViewById(R.id.progress);
     }
 
     @Override
@@ -56,16 +56,15 @@ public class MainActivity extends ActionBarActivity {
     public void tellJoke(View view){
         final Context context = this;
         new JokeProviderEndpointsAsyncTask().execute(new JokeProviderEndpointsAsyncTask.EndpointsAsyncTaskCallback() {
-                    @Override
-                    public void onPostExecuteCallback(String result) {
-                        Log.v(LOG_TAG,"Result is: " + result);
-                        Log.v(LOG_TAG,"onPostExecuteCallback");
-                        Intent jokeViewIntent = new Intent(context, JokeViewActivity.class);
-                        jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, result);
-                        context.startActivity(jokeViewIntent);
+            @Override
+            public void onPostExecuteCallback(String result) {
+                Log.v(LOG_TAG, "Result is: " + result);
+                Log.v(LOG_TAG, "onPostExecuteCallback");
+                Intent jokeViewIntent = new Intent(context, JokeViewActivity.class);
+                jokeViewIntent.putExtra(JokeViewActivity.EXTRA_JOKE, result);
+                context.startActivity(jokeViewIntent);
                     }
                 });
         mProgress.setVisibility(View.VISIBLE);
-
     }
 }
