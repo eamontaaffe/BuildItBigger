@@ -18,6 +18,7 @@ allprojects {
     }
 }
 
+// Configure the backend to run on a daemon so that tasks can be run simultaneously
 project(":jokeBackend").afterEvaluate { jokeBackend ->
     jokeBackend.extensions.appengine.daemon = true
 }
