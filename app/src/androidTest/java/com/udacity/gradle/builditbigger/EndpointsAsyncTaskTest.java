@@ -4,7 +4,8 @@ import android.test.AndroidTestCase;
 
 import java.util.concurrent.ExecutionException;
 
-public class EndointsAsyncTaskTest extends AndroidTestCase {
+// You have to use a connected test in order to run an AsyncTask
+public class EndpointsAsyncTaskTest extends AndroidTestCase {
     // Test to make sure that the return is non null
     public void testNotNull() {
         JokeProviderEndpointsAsyncTask.EndpointsAsyncTaskCallback cB = new JokeProviderEndpointsAsyncTask.EndpointsAsyncTaskCallback() {

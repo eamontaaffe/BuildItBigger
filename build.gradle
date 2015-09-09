@@ -17,3 +17,16 @@ allprojects {
         jcenter()
     }
 }
+
+project(":jokeBackend").afterEvaluate { jokeBackend ->
+    jokeBackend.extensions.appengine.daemon = true
+}
+
+task configureTest {
+    dependsOn = [":jokeBackend:appengineRun"]
+    group "custom tasks"
+
+    tasks.getByPath(":jokeBackend:appengineStop").mustRunAfter(":app:connectedCheck")
+
+    finalizedBy = [":app:connectedCheck","jokeBackend:appengineStop"]
+}
