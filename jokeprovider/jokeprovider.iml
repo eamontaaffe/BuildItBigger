@@ -27,6 +27,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="json-20090211" level="project" />
     <orderEntry type="library" exported="" name="jokeprovider.jokeprovider" level="project" />
   </component>
 </module>
