@@ -26,11 +26,11 @@ class JokeProviderEndpointsAsyncTask
     protected String doInBackground(EndpointsAsyncTaskCallback... params) {
         if(myApiService == null) {  // Only do this once
             // Uncomment this section to use the cloud deployed endpoints server
-            /*
-            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport()
-                    , new AndroidJsonFactory(), null)
-                .setRootUrl("https://builditbigger-1061.appspot.com/_ah/api/");
-            */
+
+//            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport()
+//                    , new AndroidJsonFactory(), null)
+//                .setRootUrl("https://builditbigger-1061.appspot.com/_ah/api/");
+
 
             // Uncomment this section to use the locally deployed endpoints server
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
