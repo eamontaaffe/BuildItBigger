@@ -27,20 +27,20 @@ class JokeProviderEndpointsAsyncTask
         if(myApiService == null) {  // Only do this once
             // Uncomment this section to use the cloud deployed endpoints server
 
-//            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport()
-//                    , new AndroidJsonFactory(), null)
-//                .setRootUrl("https://builditbigger-1061.appspot.com/_ah/api/");
+            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport()
+                    , new AndroidJsonFactory(), null)
+                .setRootUrl("https://builditbigger-1061.appspot.com/_ah/api/");
 
 
             // Uncomment this section to use the locally deployed endpoints server
-            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
-                    .setRootUrl("http://10.0.2.2:8080/_ah/api/") // 10.0.2.2 is localhost's IP address in Android emulator
-                    .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
-                        @Override
-                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
-                            abstractGoogleClientRequest.setDisableGZipContent(true);
-                        }
-                    });
+//            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
+//                    .setRootUrl("http://10.0.2.2:8080/_ah/api/") // 10.0.2.2 is localhost's IP address in Android emulator
+//                    .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
+//                        @Override
+//                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
+//                            abstractGoogleClientRequest.setDisableGZipContent(true);
+//                        }
+//                    });
             myApiService = builder.build();
         }
 

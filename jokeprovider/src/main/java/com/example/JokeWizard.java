@@ -22,6 +22,9 @@ public class JokeWizard {
         } catch (Exception e) {
 
         } finally {
+            if (joke == null) {
+                joke = "Error retrieving joke from API";
+            }
             return joke;
         }
     }
